@@ -8,6 +8,8 @@ app.engine('html', nunjucks.render); // when giving html files to res.render, te
 nunjucks.configure('views', { noCache: true })
 const volleyball = require('volleyball')
 app.use(volleyball)
+var routes=require('./routes/index.js')
+app.use('/',routes)
 
 //var bodyParser=require('body-parser')
 
@@ -17,25 +19,19 @@ app.use(volleyball)
 //     //next()
 // })
 
-app.use('/special',function (req, res, next) {
-    // do your logging here
-    res.send('Welcome to the SpEcIaL page');
-    console.log(chalk.yellow('Status Code: '+res.statusCode))
-    next()
-})
-var people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
-//res.render( 'index', {title: 'Hall of Fame', people: people} );
-app.get('/', function (req, res) {
-  res.render('index', {title: "this is the title", people: people})
-  console.log(chalk.yellow('Status Code: '+res.statusCode))
-
-});
-
-app.get('/news', function (req, res) {
-  res.send('This is the News page');
-  console.log(chalk.yellow('Status Code: '+res.statusCode))
-
-});
+// app.use('/special',function (req, res, next) {
+//     // do your logging here
+//     res.send('Welcome to the SpEcIaL page');
+//     console.log(chalk.yellow('Status Code: '+res.statusCode))
+//     next()
+// })
+// var people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
+// //res.render( 'index', {title: 'Hall of Fame', people: people} );
+// app.get('/', function (req, res) {
+//   res.render('index', {title: "this is the title", people: people})
+//   console.log(chalk.yellow('Status Code: '+res.statusCode))
+//
+// });
 
 app.listen(3000, function () {
   console.log('Twitter app listening on port 3000!');
