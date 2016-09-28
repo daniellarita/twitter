@@ -9,9 +9,12 @@ router.use(express.static('public'));
 router.get('/', function (req, res, next) {
   console.log(chalk.yellow('Status Code: '+res.statusCode))
   var tweets = tweetBank.list();
-  //res.render('index', {title: "this is the title", people: people})
   res.render( 'index', { tweets: tweets } );
-  next();
+});
+router.get('/users/:name', function(req, res) {
+  var name = req.params.name;
+  var list = tweetBank.find( {name: name} );
+  res.render( 'index', { tweets: list } );
 });
 
 router.get('/stylesheets/style.css', function (req, res){
