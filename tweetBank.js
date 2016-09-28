@@ -17,8 +17,7 @@ function find (properties) {
 module.exports = { add: add, list: list, find: find };
 
 var randArrayEl = function(arr) {
-  return arr[1]
-  //return arr[Math.floor(Math.random() * arr.length)];
+  return arr[Math.floor(Math.random() * arr.length)];
 };
 
 var getFakeName = function() {
@@ -32,8 +31,8 @@ var getFakeTweet = function() {
   return "Fullstack Academy is " + randArrayEl(awesome_adj) + "! The instructors are just so " + randArrayEl(awesome_adj) + ". #fullstacklove #codedreams";
 };
 
-//for (var i = 0; i < 10; i++) {
+for (var i = 0; i < 10; i++) {
   module.exports.add( getFakeName(), getFakeTweet() );
-//}
+}
 
 console.log(data);
