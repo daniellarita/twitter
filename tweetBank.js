@@ -3,7 +3,8 @@ var _ = require('lodash');
 var data=[] //private variable to store our tweets
 
 function add (name, content) {
-  data.push({ name: name, content: content });
+  var id=name+parseInt(Math.floor(Math.random()*10+1))
+  data.push({ name: name, content: content, id:id});
 }
 
 function list () {
