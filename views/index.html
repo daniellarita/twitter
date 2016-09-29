@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
-
+<head>
+  <title>Twitter</title>
+</head>
 {% block content %}
 
   <div class="page-header">
@@ -9,7 +11,18 @@
     <div class="col-md-3">
       <img src="https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg"><br>
       <b>Your Name</b><br>
-      100 followers
+      100 followers<br>
+      {% if showForm %}
+      <form action="/tweets" method="POST">
+        <label for="name_field">Name:</label>
+        <input name="name" value="req.params.name" type="text" id="name_field" style="width: 100px;" /><br>
+        <!-- need to update value to show user's name-->
+        <label for="text_field">Text:</label>
+        <input name="text" type="text" id="text_field" style="width: 100px;" /><br>
+
+        <input type="submit" value="Submit" />
+      </form>
+      {% endif %}
     </div>
     <div class="col-md-9">
       <h2>All Tweets</h2>
@@ -23,7 +36,6 @@
       </p>
 
       {% endfor %}
-
     </div>
   </div>
 
